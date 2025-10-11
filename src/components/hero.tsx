@@ -22,7 +22,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Discover innovative AI projects and tools that are shaping tomorrow's technology landscape.
+            Discover innovative AI projects and tools that are shaping tomorrow&apos;s technology landscape.
           </motion.p>
           <motion.div 
             className="mt-10 flex justify-center gap-4"

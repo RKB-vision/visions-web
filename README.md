@@ -1,6 +1,8 @@
 # Visions Web - AI Projects Blog
 
-A professional blog platform for showcasing AI projects and tools, inspired by Apple's design aesthetic.
+A professional blog platform for showcasing AI projects and tools, featuring an Apple-inspired design aesthetic.
+
+> 🚀 **Ready to deploy to Vercel or Netlify!** See [DEPLOYMENT.md](./DEPLOYMENT.md) for instructions.
 
 ## Features
 
@@ -50,19 +52,50 @@ Key configuration files:
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- Node.js 18+ installed
+- npm or yarn package manager
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+### Local Development
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. **Clone and install**
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/visions-web.git
+   cd visions-web
+   npm install
+   ```
+
+2. **Set up environment variables**
+   ```bash
+   cp .env.example .env
+   ```
+   
+3. **Generate authentication secret**
+   ```bash
+   openssl rand -base64 32
+   ```
+   Add the output to your `.env` file as `AUTH_SECRET`
+
+4. **Run development server**
+   ```bash
+   npm run dev
+   ```
+
+5. **Open your browser**
+   Navigate to [http://localhost:5000](http://localhost:5000)
+
+### Default Test Accounts
+- **Admin**: admin@example.com / admin123
+- **User**: user@example.com / user123
+
+## Deployment
+
+This app is ready to deploy to:
+- ✅ **Vercel** (recommended) - See [DEPLOYMENT.md](./DEPLOYMENT.md)
+- ✅ **Netlify** - See [DEPLOYMENT.md](./DEPLOYMENT.md)  
+- ✅ **Replit** - Currently running here
+
+**Custom Domain**: Configured for `www.visions.com.np` - DNS setup in [DEPLOYMENT.md](./DEPLOYMENT.md)
 
 ## Tech Stack
 

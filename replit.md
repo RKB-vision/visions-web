@@ -153,6 +153,35 @@ Based on the architecture, the system is designed to support:
 - Database connection string (when database is added)
 
 ### Deployment
-- Configured to run on port 5000
-- Supports both development and production builds
-- Static optimization for non-dynamic routes
+
+**Current Deployment Options:**
+
+1. **Replit** (Currently Running)
+   - Configured to run on port 5000
+   - Supports all server-side features (auth, API routes)
+   - Can publish directly from Replit with custom domain support
+
+2. **Vercel** (Recommended for Production)
+   - Best Next.js support (made by Next.js creators)
+   - Automatic deployments from GitHub
+   - Free SSL and custom domain support
+   - See `DEPLOYMENT.md` for setup instructions
+
+3. **Netlify** (Alternative Option)
+   - Similar features to Vercel
+   - Good Next.js support
+   - Free tier available with custom domains
+   - See `DEPLOYMENT.md` for setup instructions
+
+**Note on GitHub Pages:**
+- GitHub Pages only supports static HTML/CSS/JS
+- NOT compatible with this app due to:
+  - NextAuth requiring server-side API routes
+  - Dynamic authentication features
+  - User session management
+- For static-only deployment, all auth features must be removed
+
+**Custom Domain:**
+- Configured for `www.visions.com.np`
+- CNAME file included in `/public/CNAME`
+- DNS setup instructions in `DEPLOYMENT.md`

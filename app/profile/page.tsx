@@ -64,7 +64,7 @@ export default function ProfilePage() {
       <div className="mt-10">
         <h3 className="text-lg leading-6 font-medium text-gray-900 mb-5">Your Favorites</h3>
         <div className="bg-white shadow overflow-hidden sm:rounded-lg p-6">
-          <p className="text-gray-500">You haven't added any favorites yet.</p>
+          <p className="text-gray-500">You haven&apos;t added any favorites yet.</p>
           <div className="mt-4">
             <a href="/projects" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
               Browse Projects
