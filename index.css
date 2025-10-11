@@ -1,0 +1,429 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --background-color: #ffffff;
+    --section-background: #f5f5f7;
+    --text-color: #1d1d1f;
+    --primary-blue: #0071e3;
+    --border-color: #d2d2d7;
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 3.5em;
+    letter-spacing: -1px;
+}
+
+h2 {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+section {
+    padding: 80px 5%;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* --- Header & Navigation --- */
+header {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0 2%;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    height: 60px;
+}
+
+nav .logo {
+    font-size: 1.2em;
+    font-weight: bold;
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 20px;
+    font-size: 0.9em;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary-blue);
+}
+
+.user-section button {
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s;
+}
+
+.user-section button:hover {
+    background-color: #005bb5;
+}
+
+#user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#logout-btn {
+    background-color: #e3e3e3;
+    color: var(--text-color);
+}
+#logout-btn:hover {
+    background-color: #c7c7c7;
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    text-align: center;
+    padding: 100px 5%;
+    background-color: var(--section-background);
+}
+
+.hero-section p {
+    font-size: 1.2em;
+    color: #6e6e73;
+    max-width: 600px;
+    margin: 20px auto 0;
+}
+
+/* --- Projects Section --- */
+.projects-section {
+    background-color: var(--background-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    background-color: var(--section-background);
+    border-radius: 20px;
+    overflow: hidden;
+    text-align: center;
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.project-card h3 {
+    font-size: 1.5em;
+    margin-top: 20px;
+}
+
+.project-card p {
+    color: #6e6e73;
+    font-size: 1em;
+}
+
+.project-tags {
+    margin: 20px 0;
+}
+
+.project-tags span {
+    background-color: #e8e8ed;
+    color: #6e6e73;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8em;
+    margin: 0 5px;
+}
+
+.project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.cta-button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.cta-button:hover {
+    background-color: #005bb5;
+}
+
+.favorite-btn {
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--border-color);
+    transition: color 0.3s;
+}
+
+.favorite-btn.favorited {
+    color: #ffb800;
+}
+
+/* --- Survey & Socials Section --- */
+.survey-section, .socials-section, .admin-panel {
+    background-color: var(--section-background);
+    text-align: center;
+}
+.socials-section {
+     background-color: var(--background-color);
+}
+
+#feedback-form {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.radio-group input[type="radio"] {
+    display: none;
+}
+
+.radio-group label {
+    padding: 10px 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.radio-group input[type="radio"]:checked + label {
+    background-color: var(--primary-blue);
+    color: white;
+    border-color: var(--primary-blue);
+}
+
+.social-links a {
+    font-size: 1.2em;
+    color: var(--text-color);
+    text-decoration: none;
+    margin: 0 20px;
+    transition: color 0.3s;
+}
+.social-links a:hover {
+    color: var(--primary-blue);
+}
+.social-links i {
+    margin-right: 8px;
+}
+
+/* --- Admin Panel --- */
+.admin-widgets {
+    display: flex;
+    gap: 30px;
+    text-align: left;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.widget {
+    background-color: white;
+    padding: 30px;
+    border-radius: 20px;
+    flex: 1;
+}
+
+#survey-results-container p, #user-management-container .user-entry {
+    border-bottom: 1px solid var(--border-color);
+    padding: 10px 0;
+}
+.user-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.user-controls button, .user-controls select {
+    margin-left: 10px;
+    padding: 5px 10px;
+}
+.user-tag {
+    background-color: #0071e3;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 0.8em;
+    margin-left: 5px;
+}
+
+
+/* --- Modals & Chat --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 40px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+}
+
+.close-btn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #888;
+}
+
+#login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#login-form input {
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 1em;
+}
+
+#login-form button {
+    background-color: var(--primary-blue);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1em;
+    cursor: pointer;
+}
+.error-message {
+    color: #d10000;
+    font-size: 0.9em;
+    text-align: center;
+}
+
+.chat-widget-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-blue);
+    color: white;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    z-index: 1500;
+}
+.chat-modal {
+    max-width: 350px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+.chat-window {
+    flex-grow: 1;
+    overflow-y: auto;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+.message {
+    padding: 8px 12px;
+    border-radius: 15px;
+    margin-bottom: 8px;
+    max-width: 80%;
+}
+.received {
+    background-color: #e9e9eb;
+    align-self: flex-start;
+}
+.chat-input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+}
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 30px 5%;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9em;
+    color: #6e6e73;
+}
