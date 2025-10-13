@@ -5,11 +5,12 @@ import { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { useSession, signOut } from 'next-auth/react';
 import { motion } from 'framer-motion';
+// Remove unused Image import
 import UserButton from './auth/user-button';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  // Remove unused isAuthModalOpen and setIsAuthModalOpen
   const pathname = usePathname();
   const { data: session } = useSession();
 
