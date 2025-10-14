@@ -21,6 +21,7 @@ export default function Navigation() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Explore Projects', href: '/explore' },
+    { name: 'Explore Creators', href: '/explore-creators' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
   ];
