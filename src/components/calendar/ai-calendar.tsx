@@ -14,7 +14,6 @@ interface CalendarEvent {
 
 export default function AICalendar() {
   const [events, setEvents] = useState<CalendarEvent[]>([]);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const analyzeAndCreateEvents = async () => {

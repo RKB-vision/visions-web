@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import AvatarUploader from '@/src/components/profile/avatar-uploader';
+import Image from 'next/image';
 
 export default function ProfilePage() {
   const { data: session } = useSession();
@@ -24,8 +25,7 @@ export default function ProfilePage() {
           <>
             <div className="flex items-center gap-4">
               {avatarPath ? (
-                <img src={`/api/storage/avatars/${encodeURIComponent(avatarPath)}`} alt="avatar" className="w-20 h-20 rounded-full object-cover" />
-              ) : (
+                <Image src={`/api/storage/avatars/${encodeURIComponent(avatarPath)}`} alt="avatar" width={80} height={80} className="w-20 h-20 rounded-full object-cover" />              ) : (
                 <div className="w-20 h-20 rounded-full bg-gray-200" />
               )}
               <div>

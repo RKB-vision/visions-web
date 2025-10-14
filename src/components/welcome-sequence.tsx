@@ -34,7 +34,7 @@ export default function WelcomeSequence({ onComplete }: WelcomeSequenceProps) {
     }, 2000);
 
     return () => clearTimeout(timer);
-  }, [currentStep, session, onComplete]);
+  }, [currentStep, session, onComplete, welcomeSteps]);
 
   const handleUsernameSubmit = () => {
     if (username.trim()) {
