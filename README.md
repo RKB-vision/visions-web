@@ -1,106 +1,64 @@
-# Visions Web - AI Projects Blog
+# Visions Web - AI Projects & Tools
 
 A professional blog platform for showcasing AI projects and tools, featuring an Apple-inspired design aesthetic.
 
-> 🚀 **Ready to deploy to Vercel or Netlify!** See [DEPLOYMENT.md](./DEPLOYMENT.md) for instructions.
+## Installation & Setup
 
-## Features
+- Prereqs: Node.js 18+, npm.
+- Install: `npm install`
+- Env:
+  - `AUTH_SECRET` (or `NEXTAUTH_SECRET`)
+  - `SUPABASE_URL`
+  - `SUPABASE_SERVICE_ROLE_KEY`
+  - (Optional) `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY` if client Supabase is used.
+- Migrations: Apply SQL in `supabase/migrations/001_init_surveys_profiles.sql` to your Supabase project.
+- Dev: `npm run dev` then visit `http://localhost:5000`.
 
-- **Professional Apple-inspired Design**: Clean, modern interface with intuitive navigation
-- **AI Tools & Projects Section**: Dedicated area to showcase AI projects and tools
-- **Authentication System**: User login/logout functionality
-- **Survey System**: Pre-defined surveys for user feedback
-- **Admin Panel**: Advanced options for user management
-  - Assign special tags to users (TOP SUPPORTER, TRUSTED, etc.)
-  - View survey responses with username information
-- **Favorites System**: Users can mark projects as favorites
-- **Chat System**: Messaging functionality for users with "TRUSTED" status
-- **Social Profiles**: Integration with social media platforms
+## Features & Usage
 
-## Admin Guide
+- Authentication: Sign in at `/auth/signin` (default test accounts in this README).
+- Dashboard: `/dashboard` integrates Welcome, Chat, Calendar.
+- Routing: `/blog`, `/explore`, `/about` pages enabled.
+- Surveys:
+  - Users submit feedback at `/surveys` (stored in Supabase).
+  - Admin views, filters, and exports at `/admin` → “Survey Responses”.
+- Avatars:
+  - Users upload avatars in `/profile` (signed URL upload via Supabase storage).
+  - Stored path saved to `profiles` table.
 
-### How to Add New Projects
+## Supabase Configuration
 
-1. Navigate to the `content/projects` directory
-2. Create a new Markdown file with the following format:
-   ```md
-   ---
-   title: "Project Title"
-   description: "Brief description of the project"
-   date: "YYYY-MM-DD"
-   image: "/images/projects/project-image.jpg"
-   tags: ["AI", "Machine Learning", "NLP"]
-   featured: true/false
-   ---
+- Create project and set env vars in `.env.local`.
+- Run the migration SQL.
+- Storage bucket `avatars` is auto-created by API route; keep it private.
+- RLS enabled; APIs use service role and NextAuth roles for secure access.
 
-   Project content goes here...
-   ```
+## Troubleshooting
 
-### Admin Features
+- 404s on `/blog`, `/explore`, `/about`:
+  - Ensure pages exist and navigation points to the correct paths.
+- Supabase errors:
+  - Verify `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
+  - Check that migrations ran successfully.
+- Avatar uploads fail:
+  - Confirm bucket exists and keys are correct.
+  - Ensure content-type matches the file type.
 
-- **User Management**: Access the admin panel at `/admin` to manage users
-- **Assign Tags**: From the admin panel, select a user and assign special tags
-- **Survey Results**: View and export survey responses from the admin dashboard
-- **Content Management**: Add, edit, or remove projects and blog posts
+## Connect
 
-### Configuration
+<a href="https://twitter.com/yourprofile" target="_blank" rel="noopener">
+  <img src="public/vercel.svg" alt="Twitter" width="28" style="vertical-align:middle; margin-right:8px;" />
+</a>
+<a href="https://github.com/yourprofile" target="_blank" rel="noopener">
+  <img src="public/next.svg" alt="GitHub" width="28" style="vertical-align:middle; margin-right:8px;" />
+</a>
+<a href="https://www.linkedin.com/in/yourprofile" target="_blank" rel="noopener">
+  <img src="public/globe.svg" alt="LinkedIn" width="28" style="vertical-align:middle; margin-right:8px;" />
+</a>
 
-Key configuration files:
-- `src/config/auth.ts` - Authentication settings
-- `src/config/admin.ts` - Admin panel configuration
-- `src/config/surveys.ts` - Survey question configuration
-
-## Getting Started
-
-### Prerequisites
-- Node.js 18+ installed
-- npm or yarn package manager
-
-### Local Development
-
-1. **Clone and install**
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/visions-web.git
-   cd visions-web
-   npm install
-   ```
-
-2. **Set up environment variables**
-   ```bash
-   cp .env.example .env
-   ```
-   
-3. **Generate authentication secret**
-   ```bash
-   openssl rand -base64 32
-   ```
-   Add the output to your `.env` file as `AUTH_SECRET`
-
-4. **Run development server**
-   ```bash
-   npm run dev
-   ```
-
-5. **Open your browser**
-   Navigate to [http://localhost:5000](http://localhost:5000)
-
-### Default Test Accounts
-- **Admin**: admin@example.com / admin123
-- **User**: user@example.com / user123
-
-## Deployment
-
-This app is ready to deploy to:
-- ✅ **Vercel** (recommended) - See [DEPLOYMENT.md](./DEPLOYMENT.md)
-- ✅ **Netlify** - See [DEPLOYMENT.md](./DEPLOYMENT.md)  
-- ✅ **Replit** - Currently running here
-
-**Custom Domain**: Configured for `www.visions.com.np` - DNS setup in [DEPLOYMENT.md](./DEPLOYMENT.md)
+## Default Test Accounts
+- Admin: `admin@example.com` / `admin123`
+- User: `user@example.com` / `user123`
 
 ## Tech Stack
-
-- Next.js
-- TypeScript
-- Tailwind CSS
-- Authentication (NextAuth.js)
-- Content Management (Markdown)
+Next.js, TypeScript, Tailwind CSS, NextAuth.js, Supabase

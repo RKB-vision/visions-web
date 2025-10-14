@@ -1,6 +1,38 @@
 "use client";
+import { useState } from 'react';
 
 export default function SurveysPage() {
+  const [submitting, setSubmitting] = useState(false);
+  const [message, setMessage] = useState<string | null>(null);
+
+  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+    const payload = {
+      name: formData.get('name')?.toString() || '',
+      email: formData.get('email')?.toString() || '',
+      rating: Number(formData.get('rating') || 0),
+      feedback: formData.get('feedback')?.toString() || '',
+    };
+
+    setSubmitting(true);
+    setMessage(null);
+    const res = await fetch('/api/surveys', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    const json = await res.json().catch(() => ({}));
+    setSubmitting(false);
+    if (!res.ok) {
+      setMessage(`Error: ${json.error ?? 'Submission failed'}`);
+    } else {
+      setMessage('Thanks! Your feedback has been recorded.');
+      form.reset();
+    }
+  }
+
   return (
     <div className="min-h-screen bg-white py-20 px-6">
       <div className="max-w-4xl mx-auto">
@@ -9,7 +41,7 @@ export default function SurveysPage() {
           Help us improve by sharing your feedback. Your input is valuable to us.
         </p>
         
-        <form className="space-y-6">
+        <form className="space-y-6" onSubmit={onSubmit}>
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
               Name
@@ -65,10 +97,10 @@ export default function SurveysPage() {
 
           <button
             type="submit"
-            className="w-full bg-black text-white py-3 px-6 rounded-full hover:bg-gray-800 transition-colors"
-          >
-            Submit Feedback
+            className="w-full bg-black text-white py-3 px-6 rounded-full hover:bg-gray-800 transition-colors" disabled={submitting}>
+            {submitting ? 'Submitting...' : 'Submit Feedback'}
           </button>
+          {message && <p className="text-center text-sm mt-4">{message}</p>}
         </form>
       </div>
     </div>

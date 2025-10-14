@@ -1,76 +1,43 @@
 'use client';
-
+import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+import AvatarUploader from '@/src/components/profile/avatar-uploader';
 
 export default function ProfilePage() {
-  const { data: session, status } = useSession();
-  const router = useRouter();
-  
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push('/auth/signin');
-    }
-  }, [status, router]);
+  const { data: session } = useSession();
+  const [avatarPath, setAvatarPath] = useState<string | null>(null);
 
-  if (status === 'loading') {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-      </div>
-    );
-  }
+  useEffect(() => {
+    async function load() {
+      if (!session?.user?.email) return;
+      const res = await fetch('/api/surveys', { method: 'GET' }); // dummy call to keep example minimal
+      // In a real app, add a dedicated API to fetch profile info.
+    }
+    load();
+  }, [session]);
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <div className="lg:text-center mb-12">
-        <h2 className="text-base text-blue-600 font-semibold tracking-wide uppercase">User Profile</h2>
-        <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-          Welcome, {session?.user?.name}!
-        </p>
-        <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-          Manage your account and view your favorite AI projects and tools.
-        </p>
-      </div>
-
-      <div className="mt-10">
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg">
-          <div className="px-4 py-5 sm:px-6">
-            <h3 className="text-lg leading-6 font-medium text-gray-900">Account Information</h3>
-            <p className="mt-1 max-w-2xl text-sm text-gray-500">Personal details and preferences.</p>
-          </div>
-          <div className="border-t border-gray-200">
-            <dl>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Full name</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{session?.user?.name}</dd>
+    <div className="min-h-screen bg-white py-12 px-6">
+      <div className="max-w-3xl mx-auto space-y-6">
+        <h1 className="text-3xl font-bold">Profile</h1>
+        {session ? (
+          <>
+            <div className="flex items-center gap-4">
+              {avatarPath ? (
+                <img src={`/api/storage/avatars/${encodeURIComponent(avatarPath)}`} alt="avatar" className="w-20 h-20 rounded-full object-cover" />
+              ) : (
+                <div className="w-20 h-20 rounded-full bg-gray-200" />
+              )}
+              <div>
+                <p className="text-gray-800 font-medium">{session.user?.name}</p>
+                <p className="text-gray-600 text-sm">{session.user?.email}</p>
               </div>
-              <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Email address</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">{session?.user?.email}</dd>
-              </div>
-              <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                <dt className="text-sm font-medium text-gray-500">Account type</dt>
-                <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-                  {session?.user?.role === 'admin' ? 'Administrator' : 'Standard User'}
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-10">
-        <h3 className="text-lg leading-6 font-medium text-gray-900 mb-5">Your Favorites</h3>
-        <div className="bg-white shadow overflow-hidden sm:rounded-lg p-6">
-          <p className="text-gray-500">You haven&apos;t added any favorites yet.</p>
-          <div className="mt-4">
-            <a href="/projects" className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700">
-              Browse Projects
-            </a>
-          </div>
-        </div>
+            </div>
+            <AvatarUploader onUploaded={setAvatarPath} />
+          </>
+        ) : (
+          <p>Please sign in to manage your profile.</p>
+        )}
       </div>
     </div>
   );

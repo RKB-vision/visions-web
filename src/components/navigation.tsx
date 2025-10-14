@@ -20,7 +20,7 @@ export default function Navigation() {
 
   const navLinks = [
     { name: 'Home', href: '/' },
-    { name: 'AI Tools & Projects', href: '/projects' },
+    { name: 'Explore Projects', href: '/explore' },
     { name: 'Blog', href: '/blog' },
     { name: 'About', href: '/about' },
   ];
@@ -48,6 +48,18 @@ export default function Navigation() {
                     {link.name}
                   </Link>
                 ))}
+                {session?.user?.role === 'admin' && (
+                  <Link
+                    href="/admin"
+                    className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
+                      pathname === '/admin'
+                        ? 'text-white'
+                        : 'text-gray-300 hover:text-white'
+                    }`}
+                  >
+                    Admin
+                  </Link>
+                )}
               </div>
             </div>
           </div>
