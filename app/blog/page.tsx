@@ -17,7 +17,7 @@ export default function BlogPage() {
         </p>
         <div className="mt-6">
           <p className="text-md text-gray-500">
-            We're busy crafting engaging content. Check back soon for our first posts!
+            We&apos;re busy crafting engaging content. Check back soon for our first posts!
           </p>
         </div>
       </div>
