@@ -4,7 +4,7 @@ import "./globals.css";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { Providers } from "./providers";
-import PageTransition from "@/src/components/ui/page-transition";
+import PageTransition from "@/components/ui/page-transition";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

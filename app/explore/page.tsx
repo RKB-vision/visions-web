@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import FeaturedProjects from '@/src/components/featured-projects';
+import FeaturedProjects from '@/components/featured-projects';
 
 export default function ExplorePage() {
   return (

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { signIn } from 'next-auth/react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 
 export default function SignIn() {
@@ -11,6 +11,8 @@ export default function SignIn() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
   const router = useRouter();
+  const params = useSearchParams();
+  const registered = params.get('registered') === 'true';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,6 +47,12 @@ export default function SignIn() {
             </Link>
           </p>
         </div>
+
+        {registered && (
+          <div className="bg-green-50 border-l-4 border-green-400 p-4">
+            <p className="text-sm text-green-700">Account created. Please sign in.</p>
+          </div>
+        )}
 
         {error && (
           <div className="bg-red-50 border-l-4 border-red-400 p-4">

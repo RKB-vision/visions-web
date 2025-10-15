@@ -1,7 +1,7 @@
 'use client';
 import { useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
-import AvatarUploader from '@/src/components/profile/avatar-uploader';
+import AvatarUploader from '@/components/profile/avatar-uploader';
 import Image from 'next/image';
 
 export default function ProfilePage() {
