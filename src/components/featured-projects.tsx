@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import RevealOnScroll from './ui/reveal-on-scroll';
 
 // Mock data - will be replaced with real data from content files later
 const projects = [
@@ -44,51 +45,59 @@ export default function FeaturedProjects() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
-            <motion.div
-              key={project.id}
-              className="bg-white rounded-2xl shadow-lg overflow-hidden"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-            >
-              <div className="h-48 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500 text-lg">Project Image</span>
-              </div>
-              <div className="p-6">
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {project.tags.map((tag) => (
-                    <span 
-                      key={tag} 
-                      className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full"
-                    >
-                      {tag}
-                    </span>
-                  ))}
+            <RevealOnScroll key={project.id}>
+              <motion.div
+                className="bg-white rounded-2xl shadow-lg overflow-hidden group"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -3 }}
+              >
+                <div className="relative h-48 bg-gray-200 flex items-center justify-center">
+                  <span className="text-gray-500 text-lg">Project Image</span>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity grid place-items-center">
+                    <div className="flex gap-3">
+                      <button className="px-3 py-1 text-sm rounded-full bg-white text-black hover:bg-gray-200">Run demo</button>
+                      <button className="px-3 py-1 text-sm rounded-full bg-white text-black hover:bg-gray-200">Fork</button>
+                    </div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
-                <p className="text-gray-600 mb-4">{project.description}</p>
-                <Link 
-                  href={project.link}
-                  className="text-blue-600 font-medium hover:text-blue-800 transition-colors duration-200 flex items-center"
-                >
-                  Learn more
-                  <svg 
-                    xmlns="http://www.w3.org/2000/svg" 
-                    className="h-4 w-4 ml-1" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
+                <div className="p-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
+                    {project.tags.map((tag) => (
+                      <span 
+                        key={tag} 
+                        className="px-2 py-1 bg-gray-100 text-gray-600 text-xs font-medium rounded-full"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
+                  <p className="text-gray-600 mb-4">{project.description}</p>
+                  <Link 
+                    href={project.link}
+                    className="text-blue-600 font-medium hover:text-blue-800 transition-colors duration-200 flex items-center"
                   >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M9 5l7 7-7 7" 
-                    />
-                  </svg>
-                </Link>
-              </div>
-            </motion.div>
+                    Learn more
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-4 w-4 ml-1" 
+                      fill="none" 
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M9 5l7 7-7 7" 
+                      />
+                    </svg>
+                  </Link>
+                </div>
+              </motion.div>
+            </RevealOnScroll>
           ))}
         </div>
 

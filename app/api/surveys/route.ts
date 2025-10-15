@@ -19,7 +19,13 @@ export async function POST(request: Request) {
   if (!body) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
 
   const { name, email, rating, feedback } = body;
-  if (!rating || rating < 1 || rating > 5) {
+  const ratingNum = typeof rating === 'string' ? Number(rating) : Number(rating);
+  if (
+    !Number.isFinite(ratingNum) ||
+    Math.floor(ratingNum) !== ratingNum ||
+    ratingNum < 1 ||
+    ratingNum > 5
+  ) {
     console.error('Invalid rating received:', rating);
     return NextResponse.json({ error: 'Invalid rating' }, { status: 400 });
   }
@@ -29,7 +35,7 @@ export async function POST(request: Request) {
   const { error } = await supabase.from('survey_responses').insert({
     name: typeof name === 'string' ? name : null,
     email: typeof email === 'string' ? email : null,
-    rating,
+    rating: ratingNum,
     feedback: typeof feedback === 'string' ? feedback : null,
     user_email: session?.user?.email ?? null,
   });

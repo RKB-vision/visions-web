@@ -49,6 +49,7 @@ export default function SurveysPage() {
             <input
               type="text"
               id="name"
+              name="name"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Your name"
             />
@@ -61,6 +62,7 @@ export default function SurveysPage() {
             <input
               type="email"
               id="email"
+              name="email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="your@email.com"
             />
@@ -72,6 +74,8 @@ export default function SurveysPage() {
             </label>
             <select
               id="rating"
+              name="rating"
+              required
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="">Select rating</option>
@@ -89,6 +93,7 @@ export default function SurveysPage() {
             </label>
             <textarea
               id="feedback"
+              name="feedback"
               rows={6}
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="Share your thoughts..."

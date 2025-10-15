@@ -7,12 +7,15 @@ import { useSession, signOut } from 'next-auth/react';
 import { motion } from 'framer-motion';
 // Remove unused Image import
 import UserButton from './auth/user-button';
+import { useThemePrefs } from './ui/theme-provider';
 
 export default function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   // Remove unused isAuthModalOpen and setIsAuthModalOpen
   const pathname = usePathname();
   const { data: session } = useSession();
+  const { mode, setMode, toggleHighContrast, toggleLargeFont, toggleReaderMode, toggleReduceMotion } = useThemePrefs();
+  const [unread, setUnread] = useState<number>(() => Number(localStorage.getItem('notif_unread') ?? '3'));
 
   const handleSignOut = () => {
     signOut();
@@ -75,6 +78,19 @@ export default function Navigation() {
                   Sign In
                 </Link>
               )}
+              {/* Theme & accessibility quick toggles */}
+              <div className="flex items-center gap-2 ml-3">
+                <button onClick={() => setMode(mode === 'dark' ? 'light' : 'dark')} className="text-gray-300 hover:text-white text-sm">Theme</button>
+                <button onClick={toggleHighContrast} className="text-gray-300 hover:text-white text-sm">HC</button>
+                <button onClick={toggleLargeFont} className="text-gray-300 hover:text-white text-sm">A+</button>
+                <button onClick={toggleReaderMode} className="text-gray-300 hover:text-white text-sm">Reader</button>
+                <button onClick={toggleReduceMotion} className="text-gray-300 hover:text-white text-sm">Reduce</button>
+                <Link href="/notifications" className="relative text-gray-300 hover:text-white">
+                  {/* Bell */}
+                  <svg className="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7v4.586l-1.707 1.707A1 1 0 004 18h16a1 1 0 00.707-1.707L19 13.586V9a7 7 0 00-7-7zm0 20a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
+                  {unread > 0 && <span className="absolute -top-1 -right-1 bg-red-600 text-white text-xs rounded-full px-1">{unread}</span>}
+                </Link>
+              </div>
             </div>
           </div>
           <div className="-mr-2 flex md:hidden">
