@@ -15,10 +15,12 @@ export async function GET() {
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);
+  console.log('Received survey submission body:', body);
   if (!body) return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
 
   const { name, email, rating, feedback } = body;
   if (!rating || rating < 1 || rating > 5) {
+    console.error('Invalid rating received:', rating);
     return NextResponse.json({ error: 'Invalid rating' }, { status: 400 });
   }
 
@@ -31,6 +33,10 @@ export async function POST(request: Request) {
     feedback: typeof feedback === 'string' ? feedback : null,
     user_email: session?.user?.email ?? null,
   });
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 });
+  if (error) {
+    console.error('Supabase insertion error:', error);
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+  console.log('Survey successfully inserted into Supabase.');
   return NextResponse.json({ ok: true });
 }
