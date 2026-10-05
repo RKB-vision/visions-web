@@ -27,7 +27,7 @@ actions. Published project retrieval remains the only data source, so unknown
 or unpublished identifiers return the framework 404 response.
 
 VERIFICATION:
-- `npm test` — 13/13 passed, including both-link, single-link, and no-link
+- `npm test` — 15/15 passed, including both-link, single-link, and no-link
   conditional action tests.
 - `npm run typecheck` — passed.
 - `npm run lint` — passed with two existing `no-img-element` warnings for

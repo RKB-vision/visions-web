@@ -45,7 +45,7 @@ Application foundation, authoritative persistence, public retrieval, and project
   - `npm run build` — passed
   - `npm audit --omit=dev` — 0 production vulnerabilities
 - TASK-003: `npm test` — 13/13 passed; typecheck/lint/build passed; production audit clean.
-- TASK-007: tests/typecheck/lint/build passed; browser inspection covered cards, detail links, unknown-project 404, and 390px layout.
+- TASK-007: 15 tests/typecheck/lint/build passed; browser inspection covered cards, detail links, unknown-project 404, and 390px layout.
 - Public pages remain placeholders; presentation wiring belongs to TASK-006/TASK-007.
 
 ## Known Issues
