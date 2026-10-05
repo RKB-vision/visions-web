@@ -52,6 +52,7 @@ Application foundation, authoritative persistence, public retrieval, and project
 
 - TASK-001, TASK-002, and TASK-003 await independent Auditor review.
 - Blocked on product decisions: authentication method (TASK-009), GitHub metric threshold/refresh (TASK-012), payment provider/UPI mechanism (TASK-014), Experimental Mode design (TASK-015), deterministic multi-tag weighting (TASK-004 note).
+- TASK-004 is explicitly marked BLOCKED with a durable issue record because its weighting rule changes product behavior and cannot be invented by the builder.
 - `node:sqlite` is experimental on Node 25; isolated behind repository interfaces (decision recorded).
 - Full npm audit shows 7 dev-only eslint-chain vulnerabilities; production dependencies are clean.
 - Planning documents remain untracked on `main`.
@@ -59,4 +60,7 @@ Application foundation, authoritative persistence, public retrieval, and project
 
 ## Next Step
 
-TASK-004 remains blocked by its unresolved deterministic discovery weighting decision. TASK-005/TASK-006/TASK-008/TASK-015 depend on that discovery path. TASK-009/TASK-012/TASK-014 remain product-blocked. Continue with any genuinely unblocked task that does not require those decisions.
+No additional implementation task is currently available without inventing a
+product decision. Resolve TASK-004 weighting, authentication, GitHub metric
+eligibility/refresh, payment provider, and Experimental Mode design before
+continuing the dependent tasks.

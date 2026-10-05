@@ -1,6 +1,6 @@
 task_id: TASK-004
 title: Implement deterministic project discovery and combined filtering
-status: READY
+status: BLOCKED
 goal: Build rules for strongest-project ordering, personalized recommendations, load-more, and combined filters over approved public metadata.
 user_behavior: Visitors see owner-curated strongest projects by default and can find the intersection of domain, technology, and project-type filters.
 context:
