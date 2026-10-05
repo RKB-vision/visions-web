@@ -1,6 +1,6 @@
 task_id: TASK-001
 title: Establish application foundation and record implementation choices
-status: READY
+status: COMPLETE
 goal: Select and initialize the modular-monolith foundation the maps intentionally leave open.
 user_behavior: Builders can start the application locally with documented public, protected, application, and persistence boundaries.
 context:
@@ -23,6 +23,7 @@ verification:
     - Inspect ignored/example environment configuration for real credentials.
 assigned_to:
   role: fullstack
-  agent: ""
+  agent: Builder A
 notes:
   - Record technical choices; do not represent them as product requirements.
+  - Completed by Builder A on maps/builder-a (commit 316d731, handoff TASK-001-builder-a.md). Builder B independently re-verified install/typecheck/lint/build after merge into maps/builder-b.
