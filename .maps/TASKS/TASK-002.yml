@@ -1,6 +1,6 @@
 task_id: TASK-002
 title: Implement authoritative portfolio data and persistence boundaries
-status: READY
+status: READY_FOR_AUDIT
 goal: Create persistence and data access for site content, projects, approved metadata, publication state, funding configuration, and payment records.
 user_behavior: Public and administrative features use authoritative portfolio data while drafts and suggestions remain private.
 context:
@@ -24,6 +24,8 @@ verification:
     - Test public queries with draft, published, and unapproved-suggestion fixtures.
 assigned_to:
   role: backend
-  agent: ""
+  agent: Builder B
 notes:
   - Preserve owner editorial control; do not add a rigid recommendation score.
+  - Extends Builder A's TASK-001 repository contracts in src/persistence and src/application; do not fork a parallel data layer.
+  - Implemented by Builder B on maps/builder-b. Data-layer tests: 11/11 passed. typecheck/lint/build passed. Handoff: .maps/HANDOFFS/TASK-002-builder-b.md
