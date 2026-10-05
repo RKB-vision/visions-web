@@ -1,6 +1,6 @@
 task_id: TASK-001
 title: Establish application foundation and record implementation choices
-status: COMPLETE
+status: READY_FOR_AUDIT
 goal: Select and initialize the modular-monolith foundation the maps intentionally leave open.
 user_behavior: Builders can start the application locally with documented public, protected, application, and persistence boundaries.
 context:
