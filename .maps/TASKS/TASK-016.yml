@@ -1,0 +1,36 @@
+task_id: TASK-016
+title: Run cross-feature security, regression, accessibility, and responsive verification
+status: READY
+goal: Verify integrated behavior against Project Map criteria and record evidence or defects without changing product scope.
+user_behavior: Visitors and owner receive documented public and protected behavior reliably across core flows.
+context:
+  project_map: "Sections 9 and 14 define visual, usability, security, and behavior criteria."
+  architecture_map: "Sections 2, 8, 9, and 10 define public/private and external trust boundaries to verify."
+scope:
+  files_or_components:
+    - Automated integration/end-to-end test coverage
+    - Accessibility and responsive/manual verification evidence
+    - MAPS issue/state records for actual results
+dependencies:
+  - TASK-006
+  - TASK-008
+  - TASK-011
+  - TASK-012
+  - TASK-013
+  - TASK-014
+  - TASK-015
+acceptance_criteria:
+  - Testing covers homepage, poll, personalized discovery, filters, conditional links, admin authorization, metadata review, funding verification, and goal reached.
+  - Public/private and payment trust boundaries are tested through direct requests as well as UI paths where applicable.
+  - Responsive/accessibility behavior is inspected for core public flows.
+  - Actual failures are recorded with expected/actual behavior and next step.
+verification:
+  required:
+    - Run complete automated suite and static checks selected in TASK-001.
+    - Perform documented browser checks at desktop and narrow viewport widths.
+    - Update MAPS records with actual results.
+assigned_to:
+  role: testing
+  agent: ""
+notes:
+  - Final gate; it does not authorize silent redesign of failed features.

@@ -1,0 +1,30 @@
+task_id: TASK-008
+title: Build the All Projects browsing interface
+status: READY
+goal: Provide All Projects with combined filters, empty states, load more, and project-detail navigation.
+user_behavior: Visitors can browse all public projects and narrow them by domain/interest, technology, and project type together.
+context:
+  project_map: "Section 4.7 and Project Browsing acceptance criterion require all projects and intersecting filters."
+  architecture_map: "Sections 3.3 and 6.4 assign filtering to discovery and presentation to the public interface."
+scope:
+  files_or_components:
+    - All Projects route and filter controls
+    - Result list, empty state, load-more, and view-all behavior
+    - Integration with discovery filters/pagination
+dependencies:
+  - TASK-004
+  - TASK-007
+acceptance_criteria:
+  - Selections across all three categories produce their intersection.
+  - Filter values derive only from approved public metadata.
+  - Empty and load-more states allow visitors to change or clear filters.
+  - Cards route to public project details.
+verification:
+  required:
+    - Browser-test individual filters, three-category intersection, no results, reset, and load-more.
+    - Inspect narrow viewport filter usability.
+assigned_to:
+  role: frontend
+  agent: ""
+notes:
+  - Browsing remains accessible after poll completion or skip.

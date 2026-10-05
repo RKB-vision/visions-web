@@ -1,0 +1,28 @@
+task_id: TASK-004
+title: Implement deterministic project discovery and combined filtering
+status: READY
+goal: Build rules for strongest-project ordering, personalized recommendations, load-more, and combined filters over approved public metadata.
+user_behavior: Visitors see owner-curated strongest projects by default and can find the intersection of domain, technology, and project-type filters.
+context:
+  project_map: "Sections 4.2, 4.6, and 4.7 define default ranking, personalization, load more, and combined filters."
+  architecture_map: "Sections 3.3 and 6.3-6.4 assign deterministic discovery using published approved tags."
+scope:
+  files_or_components:
+    - Project Discovery service/query logic
+    - Featured owner-controlled ordering and tag-based personalization
+    - Filter intersection and pagination
+dependencies:
+  - TASK-002
+acceptance_criteria:
+  - Default discovery uses owner-controlled featured/ranking data without requiring a rigid numerical formula.
+  - One visitor type plus zero or more interests changes ordering from approved project tags.
+  - Domain/interest, technology, and project type combine as an intersection.
+  - Empty matches, invalid filters, and missing metrics fail safely.
+verification:
+  required:
+    - Test default/personalized order, intersection filters, no matches, pagination, and draft exclusion.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - Record the selected deterministic multi-match weighting before implementation; it is presently open.

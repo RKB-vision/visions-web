@@ -1,0 +1,30 @@
+task_id: TASK-012
+title: Integrate GitHub repository metrics and display eligibility
+status: BLOCKED
+goal: Retrieve and normalize configured GitHub metrics and expose threshold eligibility without confusing external data with owner-authored truth.
+user_behavior: Visitors see metrics only when available and meeting the configured threshold; GitHub failures do not break browsing.
+context:
+  project_map: "Sections 4.2-4.3, 8, and 10 require optional GitHub metrics with a configurable threshold."
+  architecture_map: "Sections 3.9, 6.7, and 9.1 define GitHub as external truth and leave API/refresh strategy open."
+scope:
+  files_or_components:
+    - GitHub adapter and normalized metrics representation
+    - Secure credentials/configuration
+    - Configurable threshold and selected refresh mechanism
+dependencies:
+  - TASK-001
+  - TASK-002
+acceptance_criteria:
+  - GitHub API and manual/scheduled refresh strategy are recorded before implementation.
+  - Metrics remain external derived data rather than overwriting owner-authored content.
+  - Metrics below threshold are omitted from cards.
+  - Rate limits, unavailable repositories, and API failures keep the portfolio usable without fabricated numbers.
+verification:
+  required:
+    - Test successful, missing, below-threshold, stale/unavailable, and API-failure states.
+    - Confirm credentials are absent from public browser bundles.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - Blocked pending threshold and refresh strategy decisions; document API selection.

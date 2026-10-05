@@ -1,0 +1,31 @@
+task_id: TASK-006
+title: Build the minimal-professional homepage
+status: READY
+goal: Implement the default homepage using public content, discovery, and personalization.
+user_behavior: Visitors immediately understand who the owner is, what they build, background, strongest work, achievements, and social destinations.
+context:
+  project_map: "Sections 4.1, 5, and homepage acceptance criteria prescribe content order and emphasis."
+  architecture_map: "Sections 3.1 and 6.1 assign homepage presentation to the Public Portfolio Interface."
+scope:
+  files_or_components:
+    - Homepage route and presentation components
+    - Introduction, education, skills, strongest projects, achievements, and social links
+    - Discovery and personalization integration
+dependencies:
+  - TASK-003
+  - TASK-004
+  - TASK-005
+acceptance_criteria:
+  - Homepage follows documented order and contains no empty work-experience section.
+  - Education is supportive rather than dominant; strongest projects remain visible without poll completion.
+  - GitHub and LinkedIn are owner-maintained outbound links.
+  - The default is readable, responsive, and Minimal & Professional.
+verification:
+  required:
+    - Visually inspect desktop and narrow viewport states.
+    - Test default, completed-poll, and skipped-poll project states.
+assigned_to:
+  role: frontend
+  agent: ""
+notes:
+  - Use owner-maintained content; do not invent personal claims.

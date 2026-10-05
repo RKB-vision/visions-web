@@ -1,0 +1,29 @@
+task_id: TASK-009
+title: Implement owner authentication and server-side authorization
+status: BLOCKED
+goal: Protect administrative reads and writes with a selected owner authentication method and server-side authorization.
+user_behavior: Unauthorized visitors cannot access or invoke project, metadata, publication, or funding-management operations.
+context:
+  project_map: "Sections 4.10 and Admin Security acceptance criterion require a private admin area and protected management operations."
+  architecture_map: "Sections 3.10 and 10 require server-side authorization; authentication method remains unresolved."
+scope:
+  files_or_components:
+    - Selected authentication/session mechanism
+    - Authorization guards for admin routes and operations
+    - Protected entry route and unauthorized handling
+dependencies:
+  - TASK-001
+acceptance_criteria:
+  - The authentication choice is recorded before implementation.
+  - Anonymous/unauthorized requests cannot read drafts or perform protected operations.
+  - Guards exist in server/application handlers, not only hidden UI.
+  - Expired or invalid sessions fail safely.
+verification:
+  required:
+    - Test anonymous, authorized, invalid-session, and direct-request attempts for every admin operation.
+    - Review protected handlers for server-side guards.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - Blocked until the owner selects or authorizes an authentication method.

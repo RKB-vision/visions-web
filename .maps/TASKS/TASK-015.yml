@@ -1,0 +1,32 @@
+task_id: TASK-015
+title: Implement the Experimental Mode presentation
+status: BLOCKED
+goal: Build the approved alternative presentation using the same portfolio, discovery, and funding services as the default experience.
+user_behavior: Visitors can access an expressive alternative presentation without altering portfolio truth or losing core information.
+context:
+  project_map: "Sections 1 and 5 require Experimental Mode but leave storytelling/interface unresolved."
+  architecture_map: "Sections 1.3, 4.1, and dependency rule 7 require a presentation-only alternative using shared services."
+scope:
+  files_or_components:
+    - Experimental Mode route/entry and presentation components
+    - Reuse of public content, project, discovery, and funding contracts
+    - Accessibility/performance safeguards for approved design
+dependencies:
+  - TASK-006
+  - TASK-007
+  - TASK-008
+  - TASK-013
+acceptance_criteria:
+  - Approved Experimental Mode design/storytelling is documented first.
+  - It uses the same authoritative data and business rules as default mode.
+  - It creates no separate project or funding data model.
+  - Core content/navigation remain usable with unavailable or reduced animation/media.
+verification:
+  required:
+    - Inspect approved mode at desktop and narrow sizes.
+    - Verify parity of project/funding truth and test reduced-motion/accessibility behavior.
+assigned_to:
+  role: frontend
+  agent: ""
+notes:
+  - Blocked pending explicit product design decision.

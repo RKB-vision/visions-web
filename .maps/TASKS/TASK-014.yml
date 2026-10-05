@@ -1,0 +1,30 @@
+task_id: TASK-014
+title: Integrate verified payment processing for project donations
+status: BLOCKED
+goal: Implement a selected payment/UPI adapter so only verified provider successes create idempotent funding records and update totals.
+user_behavior: Donors can initiate eligible payments; failure, cancellation, ambiguity, or replay never increases funding.
+context:
+  project_map: "Section 4.9 and Funding criterion require external verification before totals change."
+  architecture_map: "Sections 3.8, 4.8, 6.8, 9.3, and 10.3 define trusted payment isolation."
+scope:
+  files_or_components:
+    - Selected provider adapter and secure server configuration
+    - Payment initiation, callback/status verification, and normalized outcomes
+    - Idempotent verified-payment persistence and atomic funding update
+dependencies:
+  - TASK-002
+  - TASK-013
+acceptance_criteria:
+  - Provider and verification/callback approach are recorded before implementation.
+  - Browser success claims alone cannot update totals.
+  - Each verified success counts once; failures, cancellation, ambiguity, invalid signature, replay, and duplicates count zero.
+  - Payment initiation is denied after goal reached, including goal-boundary concurrent cases appropriate to chosen persistence.
+verification:
+  required:
+    - Use sandbox/test double for verified success, failure, cancellation, timeout, invalid signature, replay, duplicate, and goal-boundary cases.
+    - Review that payment secrets stay server-side.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - Blocked until owner selects provider/UPI mechanism and supplies authorized integration access.
