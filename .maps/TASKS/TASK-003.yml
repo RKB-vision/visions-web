@@ -1,0 +1,29 @@
+task_id: TASK-003
+title: Implement public portfolio content retrieval
+status: READY
+goal: Expose public site content and published project reads without private-data leakage.
+user_behavior: Visitors receive the content needed by public portfolio pages and never receive private drafts or administrative fields.
+context:
+  project_map: "Sections 4.1, 4.3, and 4.4 define homepage, card, and detail content."
+  architecture_map: "Sections 2.1, 4.1, and 10.5 require public reads to expose only public presentation data."
+scope:
+  files_or_components:
+    - Public site-content retrieval
+    - Published project list and project-by-identifier retrieval
+    - Safe public shaping for media and conditional external links
+dependencies:
+  - TASK-002
+acceptance_criteria:
+  - Public retrieval returns only published projects and public site content.
+  - Project results include content, approved tags, visuals, and only configured external links.
+  - Missing links can be omitted by interfaces without disabled or misleading actions.
+  - Draft requests and private fields do not disclose data.
+verification:
+  required:
+    - Test published, draft, missing, and link-less project fixtures.
+    - Inspect public data for absence of sensitive fields.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - This task owns retrieval, not page presentation.

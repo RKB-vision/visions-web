@@ -1,0 +1,29 @@
+task_id: TASK-005
+title: Implement first-visit personalization state and poll
+status: READY
+goal: Add the skippable first-visit poll and minimal visitor state that supplies preferences to discovery.
+user_behavior: First-time visitors can choose one visitor type and multiple interests or skip, then browse appropriate recommendations.
+context:
+  project_map: "Section 4.5 requires automatic first-visit poll, one visitor type, multi-select interests, and skip behavior."
+  architecture_map: "Sections 2.5, 3.2, and 6.2 define temporary pseudonymous visitor state without accounts."
+scope:
+  files_or_components:
+    - Visitor-state storage mechanism
+    - Poll UI, validation, completion, and skip behavior
+    - Integration to Project Discovery
+dependencies:
+  - TASK-004
+acceptance_criteria:
+  - The poll opens only when visitor state is not seen.
+  - Completion requires exactly one listed visitor type and accepts zero or more interests.
+  - Skip records skipped status, never blocks browsing, and retains default ranking.
+  - Preferences remain minimal untrusted state and do not create accounts.
+verification:
+  required:
+    - Exercise first visit, complete, skip, return visit, cleared/corrupt state, and invalid selections.
+    - Verify a completed poll changes recommendation results for a fixture scenario.
+assigned_to:
+  role: frontend
+  agent: ""
+notes:
+  - Use only Project Map visitor types/interests unless a decision expands them.

@@ -1,0 +1,31 @@
+task_id: TASK-013
+title: Implement funding rules, funding management, and public funding presentation
+status: READY
+goal: Implement project-specific funding configuration, authoritative progress/goal logic, protected management, and public funding-page states.
+user_behavior: Visitors see funding only for active funded projects and see progress or Goal reached from authoritative funding state.
+context:
+  project_map: "Section 4.9 and Funding/Funding Goal criteria define project goals, progress, and automatic stop behavior."
+  architecture_map: "Sections 3.7, 4.7, 6.8-6.9, and 8 define Funding ownership and derived goal-reached state."
+scope:
+  files_or_components:
+    - Funding domain service and eligibility/progress calculation
+    - Protected funding-configuration controls/handlers
+    - Public funding route/page and conditional donation entry point
+dependencies:
+  - TASK-002
+  - TASK-007
+  - TASK-009
+acceptance_criteria:
+  - Only valid actively funded projects show a funding route/donation option.
+  - Funding pages show goal, verified raised amount, progress, and funding-purpose explanation.
+  - Goal reached derives from verified totals and prevents initiation of a new donation attempt.
+  - Only authorized owner operations can alter configuration; public clients cannot alter totals.
+verification:
+  required:
+    - Test not-funded, below-goal, goal-reached, invalid-configuration, and unauthorized-configuration cases.
+    - Confirm totals use only verified-success payment fixtures.
+assigned_to:
+  role: fullstack
+  agent: ""
+notes:
+  - Provider initiation and verification are deferred to TASK-014.

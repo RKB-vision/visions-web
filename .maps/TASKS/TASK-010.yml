@@ -1,0 +1,30 @@
+task_id: TASK-010
+title: Implement assistive metadata suggestion and owner review workflow
+status: READY
+goal: Let an authorized owner obtain, edit, approve, or remove tag suggestions while suggestions remain separate from public metadata.
+user_behavior: An owner sees candidate tags during project creation and explicitly decides which metadata becomes approved before publication.
+context:
+  project_map: "Section 4.8 and Project Metadata acceptance criterion require suggestion, review, editing, removal, approval, and no automatic publication."
+  architecture_map: "Sections 3.5-3.6, 6.6, and 7.5 separate suggestion state from approved metadata."
+scope:
+  files_or_components:
+    - Suggestion-provider abstraction or deterministic suggestion source
+    - Suggested-tag state and review actions
+    - Admin review UI/API integration
+dependencies:
+  - TASK-002
+  - TASK-009
+acceptance_criteria:
+  - Suggestions are stored/displayed separately from approved tags.
+  - Owner can approve, edit, or remove every suggestion before public use.
+  - Suggestion failure, duplicates, and unsupported tags do not publish metadata.
+  - Suggestions alone cannot change public discovery or publish a project.
+verification:
+  required:
+    - Test approve, edit, remove, duplicate, provider-failure, and unauthorized-review cases.
+    - Verify public reads exclude unapproved suggestions.
+assigned_to:
+  role: fullstack
+  agent: ""
+notes:
+  - Keep an unspecified provider behind the Metadata Assistant boundary.

@@ -1,0 +1,29 @@
+task_id: TASK-007
+title: Build project cards and project detail pages
+status: READY
+goal: Present published projects in concise cards and detail pages with conditional actions and deeper technical information.
+user_behavior: Visitors scan a project, open it, understand its problem/build/result, inspect visuals and technical details, and use valid external links.
+context:
+  project_map: "Sections 4.3-4.4 and Project Links acceptance criteria define cards, detail content, and conditional actions."
+  architecture_map: "Sections 4.1 and 6.5 require public presentation to consume project truth without owning it."
+scope:
+  files_or_components:
+    - Reusable project-card component
+    - Project detail route and components
+    - Conditional GitHub/live-demo action rendering
+dependencies:
+  - TASK-003
+acceptance_criteria:
+  - Cards show name, one-line description, image, technology tags, eligible metrics, and View Project.
+  - Details show overview, problem, build, result, visuals, technical details, and available links.
+  - Missing demo/GitHub links yield no empty or misleading buttons.
+  - Unknown, draft, and unpublished identifiers expose no private content.
+verification:
+  required:
+    - Render both-links, single-link, no-link, and no-eligible-metrics fixtures.
+    - Visually inspect responsive cards and detail pages.
+assigned_to:
+  role: frontend
+  agent: ""
+notes:
+  - Keep detail content concise rather than an academic-style case study.

@@ -1,0 +1,28 @@
+task_id: TASK-001
+title: Establish application foundation and record implementation choices
+status: READY
+goal: Select and initialize the modular-monolith foundation the maps intentionally leave open.
+user_behavior: Builders can start the application locally with documented public, protected, application, and persistence boundaries.
+context:
+  project_map: "Sections 9-10 require a maintainable portfolio but prescribe no framework, database, hosting, or authentication provider."
+  architecture_map: "Sections 1.2 and 2 require one deployable modular monolith with separated public, admin, application, and persistence responsibilities."
+scope:
+  files_or_components:
+    - Application bootstrap, tooling, and route/module layout
+    - Environment configuration template and secret-handling conventions
+    - Decision records for framework, persistence, deployment assumption, and configuration approach
+dependencies: []
+acceptance_criteria:
+  - Documented commands install, start, and build the application locally.
+  - Selected technologies are recorded with rationale and affected components.
+  - The layout distinguishes public presentation, protected administration, application logic, and persistence without separate services.
+  - No secrets are committed.
+verification:
+  required:
+    - Run documented install, development-start, and production-build checks.
+    - Inspect ignored/example environment configuration for real credentials.
+assigned_to:
+  role: fullstack
+  agent: ""
+notes:
+  - Record technical choices; do not represent them as product requirements.

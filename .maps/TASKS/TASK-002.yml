@@ -1,0 +1,29 @@
+task_id: TASK-002
+title: Implement authoritative portfolio data and persistence boundaries
+status: READY
+goal: Create persistence and data access for site content, projects, approved metadata, publication state, funding configuration, and payment records.
+user_behavior: Public and administrative features use authoritative portfolio data while drafts and suggestions remain private.
+context:
+  project_map: "Section 6 defines Project, Visitor Preference, Donation/Payment Record, and Site Content concepts."
+  architecture_map: "Sections 3.4, 7, and 8 define ownership, public/private classification, and authoritative sources."
+scope:
+  files_or_components:
+    - Persistence schema/migrations or equivalent data definitions
+    - Project, approved tag, site content, funding, and payment access layer
+    - Publication-state and public-data query boundaries
+dependencies:
+  - TASK-001
+acceptance_criteria:
+  - Project records support the Project Map fields needed for cards, details, tags, links, featured ranking, metrics, and funding.
+  - Suggested metadata remains separate from owner-approved metadata.
+  - Public reads exclude drafts, administrative settings, and unapproved suggestions.
+  - Funding totals can derive from verified successful payment records.
+verification:
+  required:
+    - Run schema/migration validation and data-layer tests.
+    - Test public queries with draft, published, and unapproved-suggestion fixtures.
+assigned_to:
+  role: backend
+  agent: ""
+notes:
+  - Preserve owner editorial control; do not add a rigid recommendation score.

@@ -1,0 +1,31 @@
+task_id: TASK-011
+title: Build protected project management and publication workflow
+status: READY
+goal: Provide project draft/edit, approved metadata management, and publish/unpublish only after review requirements are met.
+user_behavior: Owner maintains projects privately; visitors see projects only after metadata review and publication.
+context:
+  project_map: "Sections 4.8 and 4.10 require private management and tag review before public release."
+  architecture_map: "Sections 3.5, 4.5, and 6.6 assign protected management and publication rules to Admin."
+scope:
+  files_or_components:
+    - Admin project create/edit forms and handlers
+    - Draft, publish, and unpublish controls
+    - Validation for reviewed metadata before publishing
+dependencies:
+  - TASK-002
+  - TASK-009
+  - TASK-010
+acceptance_criteria:
+  - New projects begin as drafts and only authorized owner can edit them.
+  - Publishing is unavailable until required metadata review completes.
+  - Publish/unpublish changes public retrieval correctly.
+  - Invalid/partial updates do not corrupt project data.
+verification:
+  required:
+    - Test draft, edit, rejected early publish, approved publish, unpublish, invalid input, and unauthorized direct requests.
+    - Confirm public results through the same path public pages use.
+assigned_to:
+  role: fullstack
+  agent: ""
+notes:
+  - Full site-content CMS features remain out of scope.
