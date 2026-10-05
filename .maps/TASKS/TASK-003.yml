@@ -1,6 +1,6 @@
 task_id: TASK-003
 title: Implement public portfolio content retrieval
-status: READY
+status: READY_FOR_AUDIT
 goal: Expose public site content and published project reads without private-data leakage.
 user_behavior: Visitors receive the content needed by public portfolio pages and never receive private drafts or administrative fields.
 context:

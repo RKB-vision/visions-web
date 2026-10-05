@@ -2,6 +2,7 @@ import { openPersistence } from "@/persistence/open";
 import { createPortfolioPersistence } from "@/persistence/create-persistence";
 import { createProjectService, createAdminProjectService } from "@/application/projects/project-service";
 import { createSiteContentService } from "@/application/site-content/site-content-service";
+import { createPublicPortfolioService } from "@/application/public-portfolio-service";
 import { getPersistenceConfig } from "@/persistence/database";
 
 let singleton: ReturnType<typeof buildPortfolioServices> | null = null;
@@ -9,12 +10,15 @@ let singleton: ReturnType<typeof buildPortfolioServices> | null = null;
 function buildPortfolioServices(databasePath?: string) {
   const persistenceHandle = openPersistence(databasePath);
   const persistence = createPortfolioPersistence(persistenceHandle.db);
+  const projects = createProjectService(persistence.projects);
+  const siteContent = createSiteContentService(persistence.siteContent);
   return {
     persistence,
     close: persistenceHandle.close,
-    projects: createProjectService(persistence.projects),
+    projects,
     adminProjects: createAdminProjectService(persistence.adminProjects),
-    siteContent: createSiteContentService(persistence.siteContent),
+    siteContent,
+    publicPortfolio: createPublicPortfolioService(projects, siteContent),
   };
 }
 

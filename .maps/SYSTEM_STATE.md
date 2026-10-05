@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-TASK-001 foundation complete (Builder A, merged). TASK-002 persistence/data layer implemented by Builder B and set READY_FOR_AUDIT. No task is Auditor-VERIFIED yet.
+Application foundation, authoritative persistence, and public retrieval are implemented. Unblocked presentation work is in progress.
 
 ## Completed
 
@@ -22,14 +22,15 @@ TASK-001 foundation complete (Builder A, merged). TASK-002 persistence/data laye
   - Public reads exclude drafts/admin fields/unapproved suggestions
   - Funding totals derived from verified successful payments only
   - 11/11 data-layer tests passed; typecheck/lint/build passed
+- TASK-003 public portfolio content retrieval (`maps/builder-a`, READY_FOR_AUDIT)
 
 ## In Progress
 
-- No task currently claimed. TASK-002 awaits Auditor review.
+- Primary Builder: beginning TASK-007 project cards and detail pages
 
 ## Builders
 
-- Builder A: TASK-001 complete on `maps/builder-a`. Not currently implementing.
+- Builder A: TASK-001/TASK-003 complete for builder review on `maps/builder-a`; continuing with TASK-007.
 - Builder B: TASK-002 complete on `maps/builder-b`, status READY_FOR_AUDIT. Pushed to `origin/maps/builder-b`. Idle; will not start another task until directed and until dependencies are satisfied.
 - Auditor: Not started. Should review TASK-001 (COMPLETE, not verified) and TASK-002 (READY_FOR_AUDIT).
 
@@ -42,12 +43,12 @@ TASK-001 foundation complete (Builder A, merged). TASK-002 persistence/data laye
   - `npm run lint` — passed
   - `npm run build` — passed
   - `npm audit --omit=dev` — 0 production vulnerabilities
-- No HTTP/UI behavior for portfolio data exists yet; pages remain placeholders. Presentation wiring belongs to TASK-003/TASK-006.
+- TASK-003: `npm test` — 13/13 passed; typecheck/lint/build passed; production audit clean.
+- Public pages remain placeholders; presentation wiring belongs to TASK-006/TASK-007.
 
 ## Known Issues
 
-- TASK-001 is COMPLETE (builder) not Auditor VERIFIED.
-- TASK-002 is READY_FOR_AUDIT; Auditor must verify before dependent work is treated as fully accepted.
+- TASK-001, TASK-002, and TASK-003 await independent Auditor review.
 - Blocked on product decisions: authentication method (TASK-009), GitHub metric threshold/refresh (TASK-012), payment provider/UPI mechanism (TASK-014), Experimental Mode design (TASK-015), deterministic multi-tag weighting (TASK-004 note).
 - `node:sqlite` is experimental on Node 25; isolated behind repository interfaces (decision recorded).
 - Full npm audit shows 7 dev-only eslint-chain vulnerabilities; production dependencies are clean.
@@ -56,4 +57,4 @@ TASK-001 foundation complete (Builder A, merged). TASK-002 persistence/data laye
 
 ## Next Step
 
-Auditor reviews TASK-002 (and TASK-001) against maps + handoff evidence. After TASK-002 is verified, TASK-003 and TASK-004 become parallel-eligible. Builder B should not auto-start another task.
+Continue with TASK-007. TASK-004/TASK-005/TASK-006 remain dependent on the unresolved deterministic discovery weighting decision; TASK-009/TASK-012/TASK-014/TASK-015 remain product-blocked.
