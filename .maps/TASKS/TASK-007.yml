@@ -1,6 +1,6 @@
 task_id: TASK-007
 title: Build project cards and project detail pages
-status: READY
+status: READY_FOR_AUDIT
 goal: Present published projects in concise cards and detail pages with conditional actions and deeper technical information.
 user_behavior: Visitors scan a project, open it, understand its problem/build/result, inspect visuals and technical details, and use valid external links.
 context:

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Application foundation, authoritative persistence, and public retrieval are implemented. Unblocked presentation work is in progress.
+Application foundation, authoritative persistence, public retrieval, and project presentation are implemented. Remaining work is dependency- and decision-driven.
 
 ## Completed
 
@@ -23,14 +23,15 @@ Application foundation, authoritative persistence, and public retrieval are impl
   - Funding totals derived from verified successful payments only
   - 11/11 data-layer tests passed; typecheck/lint/build passed
 - TASK-003 public portfolio content retrieval (`maps/builder-a`, READY_FOR_AUDIT)
+- TASK-007 project cards and project detail pages (`maps/builder-a`, READY_FOR_AUDIT)
 
 ## In Progress
 
-- Primary Builder: beginning TASK-007 project cards and detail pages
+- Primary Builder: TASK-007 complete for builder review; inspecting next available tasks
 
 ## Builders
 
-- Builder A: TASK-001/TASK-003 complete for builder review on `maps/builder-a`; continuing with TASK-007.
+- Builder A: TASK-001/TASK-003/TASK-007 complete for builder review on `maps/builder-a`.
 - Builder B: TASK-002 complete on `maps/builder-b`, status READY_FOR_AUDIT. Pushed to `origin/maps/builder-b`. Idle; will not start another task until directed and until dependencies are satisfied.
 - Auditor: Not started. Should review TASK-001 (COMPLETE, not verified) and TASK-002 (READY_FOR_AUDIT).
 
@@ -44,6 +45,7 @@ Application foundation, authoritative persistence, and public retrieval are impl
   - `npm run build` — passed
   - `npm audit --omit=dev` — 0 production vulnerabilities
 - TASK-003: `npm test` — 13/13 passed; typecheck/lint/build passed; production audit clean.
+- TASK-007: tests/typecheck/lint/build passed; browser inspection covered cards, detail links, unknown-project 404, and 390px layout.
 - Public pages remain placeholders; presentation wiring belongs to TASK-006/TASK-007.
 
 ## Known Issues
@@ -57,4 +59,4 @@ Application foundation, authoritative persistence, and public retrieval are impl
 
 ## Next Step
 
-Continue with TASK-007. TASK-004/TASK-005/TASK-006 remain dependent on the unresolved deterministic discovery weighting decision; TASK-009/TASK-012/TASK-014/TASK-015 remain product-blocked.
+TASK-004 remains blocked by its unresolved deterministic discovery weighting decision. TASK-005/TASK-006/TASK-008/TASK-015 depend on that discovery path. TASK-009/TASK-012/TASK-014 remain product-blocked. Continue with any genuinely unblocked task that does not require those decisions.
