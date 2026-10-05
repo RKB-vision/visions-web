@@ -4,7 +4,7 @@ DATE: 2026-10-05
 TASK: TASK-003 — Implement public portfolio content retrieval
 STATUS: READY_FOR_AUDIT
 BRANCH: maps/builder-a
-COMMIT: Pending until commit
+COMMIT: a15f3d6fb46dea54b7556a6b96a937c8e385273f
 
 FILES CHANGED:
 - `src/application/public-portfolio-service.ts`
