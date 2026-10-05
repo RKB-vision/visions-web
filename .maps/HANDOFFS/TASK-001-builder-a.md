@@ -3,7 +3,7 @@ TO: Next implementation agent
 TASK: TASK-001 — Establish application foundation and record implementation choices
 STATUS: COMPLETE
 BRANCH: maps/builder-a
-COMMIT: Pending until this handoff is committed
+COMMIT: 316d73189a89ff45013b6cf28ad3e4527e613dd3
 
 FILES CHANGED:
 - `package.json`, `package-lock.json`, `next.config.ts`, `tsconfig.json`, `next-env.d.ts`
