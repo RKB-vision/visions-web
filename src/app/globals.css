@@ -159,6 +159,45 @@ a {
   gap: 2rem;
 }
 
+.poll {
+  background: #fff;
+  border: 1px solid #e7e7e7;
+  border-radius: 1rem;
+  display: grid;
+  gap: 1rem;
+  margin: 3rem 0;
+  max-width: 38rem;
+  padding: 1.5rem;
+}
+
+.poll label,
+.poll fieldset {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.poll select {
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+}
+
+.poll fieldset {
+  border: 0;
+  padding: 0;
+}
+
+.poll fieldset label {
+  display: flex;
+  gap: 0.5rem;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+  font: inherit;
+}
+
 .detail-section p {
   color: #444;
   line-height: 1.7;

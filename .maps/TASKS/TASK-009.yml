@@ -1,6 +1,6 @@
 task_id: TASK-009
 title: Implement owner authentication and server-side authorization
-status: BLOCKED
+status: READY
 goal: Protect administrative reads and writes with a selected owner authentication method and server-side authorization.
 user_behavior: Unauthorized visitors cannot access or invoke project, metadata, publication, or funding-management operations.
 context:

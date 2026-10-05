@@ -1,6 +1,6 @@
 task_id: TASK-015
 title: Implement the Experimental Mode presentation
-status: BLOCKED
+status: READY
 goal: Build the approved alternative presentation using the same portfolio, discovery, and funding services as the default experience.
 user_behavior: Visitors can access an expressive alternative presentation without altering portfolio truth or losing core information.
 context:

@@ -2,7 +2,7 @@
 
 ## Current Phase
 
-Application foundation, authoritative persistence, public retrieval, and project presentation are implemented. Remaining work is dependency- and decision-driven.
+Application foundation, authoritative persistence, public retrieval, project presentation, deterministic discovery, personalization poll, homepage content, and Experimental Mode are implemented. Administrative, GitHub, funding/payment, and final integration work remains.
 
 ## Completed
 
@@ -24,10 +24,14 @@ Application foundation, authoritative persistence, public retrieval, and project
   - 11/11 data-layer tests passed; typecheck/lint/build passed
 - TASK-003 public portfolio content retrieval (`maps/builder-a`, READY_FOR_AUDIT)
 - TASK-007 project cards and project detail pages (`maps/builder-a`, READY_FOR_AUDIT)
+- TASK-004 deterministic project discovery service and tests (implementation in progress for audit)
+- TASK-005 first-visit personalization poll UI (implementation in progress for audit)
+- TASK-006 data-backed homepage presentation (implementation in progress for audit)
+- TASK-015 Experimental Mode presentation (implementation in progress for audit)
 
 ## In Progress
 
-- Primary Builder: TASK-007 complete for builder review; inspecting next available tasks
+- Primary Builder: implementing remaining administrative, integration, and funding tasks
 
 ## Builders
 
@@ -46,13 +50,14 @@ Application foundation, authoritative persistence, public retrieval, and project
   - `npm audit --omit=dev` — 0 production vulnerabilities
 - TASK-003: `npm test` — 13/13 passed; typecheck/lint/build passed; production audit clean.
 - TASK-007: 15 tests/typecheck/lint/build passed; browser inspection covered cards, detail links, unknown-project 404, and 390px layout.
+- Discovery, poll, homepage, and Experimental Mode changes: 14 tests/typecheck/lint/build passed after implementation.
 - Public pages remain placeholders; presentation wiring belongs to TASK-006/TASK-007.
 
 ## Known Issues
 
 - TASK-001, TASK-002, and TASK-003 await independent Auditor review.
 - Blocked on product decisions: authentication method (TASK-009), GitHub metric threshold/refresh (TASK-012), payment provider/UPI mechanism (TASK-014), Experimental Mode design (TASK-015), deterministic multi-tag weighting (TASK-004 note).
-- TASK-004 is explicitly marked BLOCKED with a durable issue record because its weighting rule changes product behavior and cannot be invented by the builder.
+- The owner has resolved the previously blocked product choices in `2026-10-05-v1-product-decisions.md`; remaining gaps are implementation work, not unresolved product decisions.
 - `node:sqlite` is experimental on Node 25; isolated behind repository interfaces (decision recorded).
 - Full npm audit shows 7 dev-only eslint-chain vulnerabilities; production dependencies are clean.
 - Planning documents remain untracked on `main`.
@@ -60,7 +65,6 @@ Application foundation, authoritative persistence, public retrieval, and project
 
 ## Next Step
 
-No additional implementation task is currently available without inventing a
-product decision. Resolve TASK-004 weighting, authentication, GitHub metric
-eligibility/refresh, payment provider, and Experimental Mode design before
-continuing the dependent tasks.
+Continue with authentication, metadata/admin workflows, GitHub refresh,
+funding/payment adapters, All Projects filters, and final integration
+verification.

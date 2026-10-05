@@ -1,6 +1,6 @@
 task_id: TASK-012
 title: Integrate GitHub repository metrics and display eligibility
-status: BLOCKED
+status: READY
 goal: Retrieve and normalize configured GitHub metrics and expose threshold eligibility without confusing external data with owner-authored truth.
 user_behavior: Visitors see metrics only when available and meeting the configured threshold; GitHub failures do not break browsing.
 context:

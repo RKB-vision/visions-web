@@ -1,6 +1,6 @@
 task_id: TASK-014
 title: Integrate verified payment processing for project donations
-status: BLOCKED
+status: READY
 goal: Implement a selected payment/UPI adapter so only verified provider successes create idempotent funding records and update totals.
 user_behavior: Donors can initiate eligible payments; failure, cancellation, ambiguity, or replay never increases funding.
 context:
